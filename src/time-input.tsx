@@ -1,15 +1,15 @@
 type Props = {
   value: string | null;
-  indexSchedule: number;
-  handler: (value: string, indexSchedule: number) => void;
+  indexTime: number;
+  handler: (value: string, indexTime: number) => void;
 };
 
-export const TimeInput = ({ value, handler, indexSchedule }: Props) => {
+export const TimeInput = ({ value, handler, indexTime }: Props) => {
   return (
     <input
       type="time"
       value={value || ""}
-      onChange={(e) => handler(e.target.value, indexSchedule)}
+      onChange={(e) => handler(e.target.value, indexTime)}
       style={{ width: "100%" }}
     />
   );

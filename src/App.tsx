@@ -1,19 +1,22 @@
 import { useState } from "react";
 import "./App.css";
 
-import { ScheduleEmployees } from "./schedule-employee";
+import { ScheduleEmployee } from "./schedule-employee";
 
-import { SCHEDULE_EXAMPLE, Employee } from "./schedule";
+import { Employee } from "./schedule";
+import { SCHEDULE_EXAMPLE } from "./mock-data";
 
 function App() {
   const [employees, setEmployees] = useState<Employee[]>(SCHEDULE_EXAMPLE);
-  return (
-    <ScheduleEmployees
-      employees={employees}
-      handler={(value, indexEmployee, indexDay, indexSchedule) => {
+  return employees.map((item, index) => (
+    <ScheduleEmployee
+      key={`employee-${item.id}`}
+      employee={item}
+      indexEmployee={index}
+      handler={(value, indexEmployee, indexDay, indexTime) => {
         const employeesData = [...employees];
         try {
-          employeesData[indexEmployee].schedule[indexDay][indexSchedule].time =
+          employeesData[indexEmployee].schedule[indexDay][indexTime].time =
             value;
           setEmployees(employeesData);
         } catch (e) {
@@ -21,7 +24,7 @@ function App() {
         }
       }}
     />
-  );
+  ));
 }
 
 export default App;

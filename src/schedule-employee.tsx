@@ -4,39 +4,36 @@ import { ScheduleDays } from "./schedule-days";
 import { ScheduleTotal } from "./schedule-total";
 
 type Props = {
-  employees: Employee[];
+  employee: Employee;
+  indexEmployee: number;
   handler: (
     value: string,
     indexEmployee: number,
     indexDay: number,
-    indexSchedule: number
+    indexTime: number
   ) => void;
 };
 
-export const ScheduleEmployees = ({ employees = [], handler }: Props) => {
+export const ScheduleEmployee = ({ employee, indexEmployee, handler }: Props) => {
   return (
-    <>
-      {employees.map((item, index) => (
-        <div
-          key={`employee-${item.id}`}
-          style={{ display: "flex", marginBottom: "1rem" }}
-        >
-          <div style={{ width: "5%" }}>{item.fullname}</div>
-          <div style={{ width: "95%", display: "flex" }}>
-            {item.schedule.map((dayItem, dayIndex) => (
-              <ScheduleDays
-                key={`day-${dayIndex}`}
-                schedule={dayItem}
-                indexDay={dayIndex}
-                handler={(value, indexDay, indexSchedule) =>
-                  handler(value, index, indexDay, indexSchedule)
-                }
-              />
-            ))}
-            <ScheduleTotal schedule={item.schedule} />
-          </div>
-        </div>
-      ))}
-    </>
+    <div
+      key={`employee-${employee.id}`}
+      style={{ display: "flex", marginBottom: "1rem" }}
+    >
+      <div style={{ width: "5%" }}>{employee.fullname}</div>
+      <div style={{ width: "95%", display: "flex" }}>
+        {employee.schedule.map((dayItem, dayIndex) => (
+          <ScheduleDays
+            key={`day-${dayIndex}`}
+            schedule={dayItem}
+            indexDay={dayIndex}
+            handler={(value, indexDay, indexTime) =>
+              handler(value, indexEmployee, indexDay, indexTime)
+            }
+          />
+        ))}
+        <ScheduleTotal schedule={employee.schedule} />
+      </div>
+    </div>
   );
 };

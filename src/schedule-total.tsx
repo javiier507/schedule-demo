@@ -1,7 +1,7 @@
-import { Schedule, Type } from "./schedule";
+import { Employee, Schedule, Type } from "./schedule";
 
 type Props = {
-  schedule: Schedule[][];
+  employee: Employee;
 };
 
 function timeToDatetime(time: string | null): Date | undefined {
@@ -43,14 +43,34 @@ function calculateByWeek(schedules: Schedule[][], type: Type) {
   );
 }
 
-export const ScheduleTotal = ({ schedule = [] }: Props) => {
-  const projectedTotal = calculateByWeek(schedule, "projected");
-  const actualTotal = calculateByWeek(schedule, "actual");
+export const ScheduleTotal = ({ employee }: Props) => {
+  const projectedTotal = calculateByWeek(employee.schedule, "projected");
+  const actualTotal = calculateByWeek(employee.schedule, "actual");
 
   return (
     <div style={{ width: "12.5%", display: "flex", flexWrap: "wrap" }}>
-      <div style={{ width: "100%" }}>{projectedTotal}</div>
-      <div style={{ width: "100%" }}>{actualTotal}</div>
+      <div style={{ width: "100%", display: "flex", padding: 10 }}>
+        <div style={{ width: "33.33%" }}>{projectedTotal.toFixed(2)}</div>
+        <div style={{ width: "33.33%" }}>
+          {projectedTotal - employee.workHours > 0
+            ? (projectedTotal - employee.workHours).toFixed(2)
+            : 0}
+        </div>
+        <div style={{ width: "33.33%" }}>
+          {(employee.rate * projectedTotal).toFixed(2)}
+        </div>
+      </div>
+      <div style={{ width: "100%", display: "flex", padding: 10 }}>
+        <div style={{ width: "33.33%" }}>{actualTotal.toFixed(2)}</div>
+        <div style={{ width: "33.33%" }}>
+          {actualTotal - employee.workHours > 0
+            ? (actualTotal - employee.workHours).toFixed(2)
+            : 0}
+        </div>
+        <div style={{ width: "33.33%" }}>
+          {(employee.rate * actualTotal).toFixed(2)}
+        </div>
+      </div>
     </div>
   );
 };

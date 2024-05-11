@@ -8,11 +8,11 @@ type Props = {
   handler: (value: string, indexDay: number, indexTime: number) => void;
 };
 
-export const ScheduleDays = ({ schedule = [], handler, indexDay }: Props) => {
+export const ScheduleDay = ({ schedule = [], handler, indexDay }: Props) => {
   return (
     <div style={{ width: "12.5%", display: "flex", flexWrap: "wrap" }}>
       {schedule.map((item, index) => (
-        <div key={`schedule-${item.id}`} style={{ width: "50%" }}>
+        <div key={`time-${item.id}`} style={{ width: "50%" }}>
           <TimeInput
             value={item.time}
             indexTime={index}

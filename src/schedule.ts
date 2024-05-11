@@ -1,6 +1,8 @@
 export type Employee = {
     id: number;
     fullname: string;
+    workHours: number;
+    rate: number;
     schedule: Schedule[][];
 }
 

@@ -1,4 +1,4 @@
-import { Employee } from "./schedule";
+import { Employee, Sale } from "./schedule";
 
 export const SCHEDULE_EXAMPLE: Employee[] = [
   {
@@ -248,5 +248,43 @@ export const SCHEDULE_EXAMPLE: Employee[] = [
         },
       ],
     ],
+  },
+];
+
+export const SALES_EXAMPLES: Sale[] = [
+  {
+    date: "2024-05-13",
+    am: 6,
+    pm: 58,
+  },
+  {
+    date: "2024-05-14",
+    am: 54,
+    pm: 42,
+  },
+  {
+    date: "2024-05-15",
+    am: 92,
+    pm: 12,
+  },
+  {
+    date: "2024-05-16",
+    am: 76,
+    pm: 46,
+  },
+  {
+    date: "2024-05-17",
+    am: 96,
+    pm: 58,
+  },
+  {
+    date: "2024-05-18",
+    am: 3,
+    pm: 51,
+  },
+  {
+    date: "2024-05-19",
+    am: 52,
+    pm: 38,
   },
 ];

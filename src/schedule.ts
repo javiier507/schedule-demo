@@ -3,7 +3,7 @@ export type Employee = {
     fullname: string;
     workHours: number;
     rate: number;
-    schedule: Schedule[][];
+    schedules: Schedule[][];
 }
 
 export type Schedule = {

@@ -23,7 +23,7 @@ export const ScheduleEmployee = ({
     <div style={{ display: "flex", marginBottom: "1rem" }}>
       <div style={{ width: "5%" }}>{employee.fullname}</div>
       <div style={{ width: "95%", display: "flex" }}>
-        {employee.schedule.map((dayItem, dayIndex) => (
+        {employee.schedules.map((dayItem, dayIndex) => (
           <ScheduleDay
             key={`day-${dayIndex}`}
             schedule={dayItem}

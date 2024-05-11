@@ -6,7 +6,7 @@ export const SCHEDULE_EXAMPLE: Employee[] = [
     fullname: "Carlos T",
     workHours: 16,
     rate: 12,
-    schedule: [
+    schedules: [
       [
         {
           id: 0,
@@ -130,7 +130,7 @@ export const SCHEDULE_EXAMPLE: Employee[] = [
     fullname: "Carlos P",
     workHours: 16,
     rate: 12.5,
-    schedule: [
+    schedules: [
       [
         {
           id: 0,

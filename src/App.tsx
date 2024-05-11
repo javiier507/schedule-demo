@@ -16,7 +16,7 @@ function App() {
       handler={(value, indexEmployee, indexDay, indexTime) => {
         const employeesData = [...employees];
         try {
-          employeesData[indexEmployee].schedule[indexDay][indexTime].time =
+          employeesData[indexEmployee].schedules[indexDay][indexTime].time =
             value;
           setEmployees(employeesData);
         } catch (e) {

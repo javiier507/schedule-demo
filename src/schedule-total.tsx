@@ -44,8 +44,8 @@ function calculateByWeek(schedules: Schedule[][], type: Type) {
 }
 
 export const ScheduleTotal = ({ employee }: Props) => {
-  const projectedTotal = calculateByWeek(employee.schedule, "projected");
-  const actualTotal = calculateByWeek(employee.schedule, "actual");
+  const projectedTotal = calculateByWeek(employee.schedules, "projected");
+  const actualTotal = calculateByWeek(employee.schedules, "actual");
 
   return (
     <div style={{ width: "12.5%", display: "flex", flexWrap: "wrap" }}>

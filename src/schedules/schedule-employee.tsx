@@ -1,7 +1,7 @@
 import { Employee } from "../types/schedule-types";
 
 import { ScheduleDay } from "./schedule-day";
-import { ScheduleTotal } from "./schedule-total";
+import { ScheduleTotalEmployee } from "./schedule-total-employee";
 
 type Props = {
   employee: Employee;
@@ -33,7 +33,7 @@ export const ScheduleEmployee = ({
             }
           />
         ))}
-        <ScheduleTotal employee={employee} />
+        <ScheduleTotalEmployee employee={employee} />
       </div>
     </div>
   );

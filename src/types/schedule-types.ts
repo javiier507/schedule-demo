@@ -20,6 +20,12 @@ export type Type = "projected" | "actual";
 
 export type Window = "in" | "out";
 
+export type ScheduleTotals = {
+  hours: number;
+  overtime: number;
+  price: number;
+};
+
 export type Sale = {
   date: string;
   am: number;

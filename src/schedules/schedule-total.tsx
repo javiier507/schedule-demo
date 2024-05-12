@@ -1,4 +1,4 @@
-import { Employee, Schedule, Type } from "./schedule";
+import { Employee, Schedule, Type } from "../schedule-types";
 
 type Props = {
   employee: Employee;

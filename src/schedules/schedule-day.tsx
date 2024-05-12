@@ -1,4 +1,4 @@
-import { Schedule } from "./schedule";
+import { Schedule } from "../schedule-types";
 
 import { TimeInput } from "./time-input";
 

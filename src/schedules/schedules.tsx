@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { ScheduleEmployee } from "./schedule-employee";
-import { Employee } from "./schedule";
+import { Employee } from "../schedule-types";
 
 type Props = {
   employees: Employee[];

@@ -1,4 +1,4 @@
-import { Sale } from "./schedule";
+import { Sale } from "../schedule-types";
 
 import { SaleInput } from "./sale-input";
 

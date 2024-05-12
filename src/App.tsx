@@ -1,7 +1,7 @@
 import { SCHEDULE_EXAMPLE, SALES_EXAMPLES } from "./mock-data";
 
-import { Sales } from "./sales";
-import { Schedules } from "./schedules";
+import { Sales } from "./sales/sales";
+import { Schedules } from "./schedules/schedules";
 
 function App() {
   return (

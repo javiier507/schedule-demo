@@ -1,4 +1,4 @@
-import { Employee, Sale } from "./schedule-types";
+import { Employee, Sale } from "./types/schedule-types";
 
 export const SCHEDULE_EXAMPLE: Employee[] = [
   {

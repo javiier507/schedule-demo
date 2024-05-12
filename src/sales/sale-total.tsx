@@ -1,4 +1,4 @@
-import { Sale } from "../schedule-types";
+import { Sale } from "../types/schedule-types";
 
 type Props = {
   sales: Sale[];

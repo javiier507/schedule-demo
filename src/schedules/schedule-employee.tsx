@@ -1,4 +1,4 @@
-import { Employee } from "../schedule-types";
+import { Employee } from "../types/schedule-types";
 
 import { ScheduleDay } from "./schedule-day";
 import { ScheduleTotal } from "./schedule-total";

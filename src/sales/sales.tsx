@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Sale } from "../schedule-types";
+import { Sale } from "../types/schedule-types";
 
 import { SaleDay } from "./sale-day";
 import { SaleTotal } from "./sale-total";

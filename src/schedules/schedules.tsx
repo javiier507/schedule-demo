@@ -10,16 +10,16 @@ type Props = {
 export const Schedules = (props: Props) => {
   const [employees, setEmployees] = useState<Employee[]>(props.employees);
 
-  const handlerUpdate = (
+  const handlerSetTime = (
     value: string,
     indexEmployee: number,
     indexDay: number,
     indexTime: number
   ) => {
-    const employeesData = [...employees];
+    const arrayData = [...employees];
     try {
-      employeesData[indexEmployee].schedules[indexDay][indexTime].time = value;
-      setEmployees(employeesData);
+      arrayData[indexEmployee].schedules[indexDay][indexTime].time = value;
+      setEmployees(arrayData);
     } catch (e) {
       console.error(e);
     }
@@ -30,7 +30,7 @@ export const Schedules = (props: Props) => {
       key={`employee-${item.id}`}
       employee={item}
       indexEmployee={index}
-      handler={handlerUpdate}
+      handlerSetTime={handlerSetTime}
     />
   ));
 };

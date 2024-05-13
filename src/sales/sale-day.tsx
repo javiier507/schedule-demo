@@ -7,10 +7,10 @@ import { SaleInput } from "./sale-input";
 type Props = {
   sale: Sale;
   indexSale: number;
-  handler: (value: Sale, indexSale: number) => void;
+  handlerSetSale: (value: Sale, indexSale: number) => void;
 };
 
-export const SaleDay = ({ sale, indexSale, handler }: Props) => {
+export const SaleDay = ({ sale, indexSale, handlerSetSale }: Props) => {
   const utcDate = convertShortDateToUtc(new Date(sale.date));
   const formatedDate = `${formatDatetime(utcDate, {
     weekday: "long",
@@ -24,8 +24,8 @@ export const SaleDay = ({ sale, indexSale, handler }: Props) => {
           <SaleInput
             value={sale.am}
             indexSale={indexSale}
-            handler={(value) => {
-              handler({ ...sale, am: value }, indexSale);
+            handlerSetSale={(value) => {
+              handlerSetSale({ ...sale, am: value }, indexSale);
             }}
           />
         </div>
@@ -33,8 +33,8 @@ export const SaleDay = ({ sale, indexSale, handler }: Props) => {
           <SaleInput
             value={sale.pm}
             indexSale={indexSale}
-            handler={(value) => {
-              handler({ ...sale, pm: value }, indexSale);
+            handlerSetSale={(value) => {
+              handlerSetSale({ ...sale, pm: value }, indexSale);
             }}
           />
         </div>

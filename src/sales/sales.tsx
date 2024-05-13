@@ -12,7 +12,7 @@ type Props = {
 export const Sales = (props: Props) => {
   const [sales, setSales] = useState<Sale[]>(props.sales);
 
-  const handlerUpdate = (value: Sale, indexSale: number) => {
+  const handlerSetSale = (value: Sale, indexSale: number) => {
     const arrayData = [...sales];
     try {
       arrayData[indexSale] = value;
@@ -31,7 +31,7 @@ export const Sales = (props: Props) => {
             key={`sale-${item.date}`}
             sale={item}
             indexSale={index}
-            handler={handlerUpdate}
+            handlerSetSale={handlerSetSale}
           />
         ))}
         <SaleTotal sales={sales} />

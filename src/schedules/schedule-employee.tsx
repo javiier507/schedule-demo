@@ -6,7 +6,7 @@ import { ScheduleTotalEmployee } from "./schedule-total-employee";
 type Props = {
   employee: Employee;
   indexEmployee: number;
-  handler: (
+  handlerSetTime: (
     value: string,
     indexEmployee: number,
     indexDay: number,
@@ -17,7 +17,7 @@ type Props = {
 export const ScheduleEmployee = ({
   employee,
   indexEmployee,
-  handler,
+  handlerSetTime,
 }: Props) => {
   return (
     <div style={{ display: "flex", marginBottom: "1rem" }}>
@@ -28,8 +28,8 @@ export const ScheduleEmployee = ({
             key={`day-${dayIndex}`}
             schedule={dayItem}
             indexDay={dayIndex}
-            handler={(value, indexDay, indexTime) =>
-              handler(value, indexEmployee, indexDay, indexTime)
+            handlerSetTime={(value, indexDay, indexTime) =>
+              handlerSetTime(value, indexEmployee, indexDay, indexTime)
             }
           />
         ))}

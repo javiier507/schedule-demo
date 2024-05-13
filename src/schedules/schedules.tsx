@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-import { ScheduleEmployee } from "./schedule-employee";
 import { Employee } from "../types/schedule-types";
+
+import { ScheduleEmployee } from "./schedule-employee";
+import { ScheduleGeneralTotal } from "./schedule-general-total";
 
 type Props = {
   employees: Employee[];
@@ -25,12 +27,17 @@ export const Schedules = (props: Props) => {
     }
   };
 
-  return employees.map((item, index) => (
-    <ScheduleEmployee
-      key={`employee-${item.id}`}
-      employee={item}
-      indexEmployee={index}
-      handlerSetTime={handlerSetTime}
-    />
-  ));
+  return (
+    <>
+      {employees.map((item, index) => (
+        <ScheduleEmployee
+          key={`employee-${item.id}`}
+          employee={item}
+          indexEmployee={index}
+          handlerSetTime={handlerSetTime}
+        />
+      ))}
+      <ScheduleGeneralTotal employees={employees} />
+    </>
+  );
 };

@@ -78,3 +78,37 @@ export function calculateByEmployee(employee: Employee): {
     actual,
   };
 }
+
+export function calculateGeneralTotal(employees: Employee[]): {
+  projected: ScheduleTotals;
+  actual: ScheduleTotals;
+} {
+  return employees.map(calculateByEmployee).reduce(
+    (prev, current): { projected: ScheduleTotals; actual: ScheduleTotals } => {
+      return {
+        projected: {
+          hours: prev.projected.hours + current.projected.hours,
+          overtime: prev.projected.overtime + current.projected.overtime,
+          cost: prev.projected.cost + current.projected.cost,
+        },
+        actual: {
+          hours: prev.actual.hours + current.actual.hours,
+          overtime: prev.actual.overtime + current.actual.overtime,
+          cost: prev.actual.cost + current.actual.cost,
+        },
+      };
+    },
+    {
+      projected: {
+        hours: 0,
+        overtime: 0,
+        cost: 0,
+      },
+      actual: {
+        hours: 0,
+        overtime: 0,
+        cost: 0,
+      },
+    }
+  );
+}

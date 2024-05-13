@@ -1,4 +1,9 @@
-import { Schedule, Type } from "../types/schedule-types";
+import {
+  Schedule,
+  Type,
+  Employee,
+  ScheduleTotals,
+} from "../types/schedule-types";
 
 export function timeToDatetime(time: string | null): Date | undefined {
   if (!time) return;
@@ -41,4 +46,35 @@ export function calculateByWeek(schedules: Schedule[][], type: Type): number {
       ),
     0
   );
+}
+
+export function calculateByEmployee(employee: Employee): {
+  projected: ScheduleTotals;
+  actual: ScheduleTotals;
+} {
+  const projectedHours = calculateByWeek(employee.schedules, "projected");
+  const actualHours = calculateByWeek(employee.schedules, "actual");
+
+  const projected: ScheduleTotals = {
+    hours: projectedHours,
+    overtime:
+      projectedHours - employee.workHours > 0
+        ? projectedHours - employee.workHours
+        : 0,
+    cost: employee.rate * projectedHours,
+  };
+
+  const actual: ScheduleTotals = {
+    hours: actualHours,
+    overtime:
+      actualHours - employee.workHours > 0
+        ? actualHours - employee.workHours
+        : 0,
+    cost: employee.rate * actualHours,
+  };
+
+  return {
+    projected,
+    actual,
+  };
 }

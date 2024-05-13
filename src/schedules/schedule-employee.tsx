@@ -1,7 +1,8 @@
 import { Employee } from "../types/schedule-types";
+import { calculateByEmployee } from "../utils/calculate";
 
 import { ScheduleDay } from "./schedule-day";
-import { ScheduleTotalEmployee } from "./schedule-total-employee";
+import { ScheduleTotal } from "./schedule-total";
 
 type Props = {
   employee: Employee;
@@ -19,6 +20,7 @@ export const ScheduleEmployee = ({
   indexEmployee,
   handlerSetTime,
 }: Props) => {
+  const totals = calculateByEmployee(employee);
   return (
     <div style={{ display: "flex", marginBottom: "1rem" }}>
       <div style={{ width: "5%" }}>{employee.fullname}</div>
@@ -33,7 +35,7 @@ export const ScheduleEmployee = ({
             }
           />
         ))}
-        <ScheduleTotalEmployee employee={employee} />
+        <ScheduleTotal {...totals} />
       </div>
     </div>
   );

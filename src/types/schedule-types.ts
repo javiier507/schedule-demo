@@ -23,7 +23,7 @@ export type Window = "in" | "out";
 export type ScheduleTotals = {
   hours: number;
   overtime: number;
-  price: number;
+  cost: number;
 };
 
 export type Sale = {

@@ -1,7 +1,7 @@
 type Props = {
   value: string | null;
   indexTime: number;
-  handlerSetTime: (value: string, indexTime: number) => void;
+  handlerSetTime: (value: string | null, indexTime: number) => void;
 };
 
 export const TimeInput = ({ value, handlerSetTime, indexTime }: Props) => {
@@ -9,7 +9,7 @@ export const TimeInput = ({ value, handlerSetTime, indexTime }: Props) => {
     <input
       type="time"
       value={value || ""}
-      onChange={(e) => handlerSetTime(e.target.value, indexTime)}
+      onChange={(e) => handlerSetTime(e.target.value || null, indexTime)}
       style={{ width: "100%" }}
     />
   );

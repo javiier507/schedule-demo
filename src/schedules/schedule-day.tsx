@@ -5,7 +5,7 @@ import { TimeInput } from "./time-input";
 type Props = {
   schedule: Schedule[];
   indexDay: number;
-  handlerSetTime: (value: string, indexDay: number, indexTime: number) => void;
+  handlerSetTime: (schedule: Schedule, indexDay: number, indexTime: number) => void;
 };
 
 export const ScheduleDay = ({ schedule = [], handlerSetTime, indexDay }: Props) => {
@@ -17,7 +17,7 @@ export const ScheduleDay = ({ schedule = [], handlerSetTime, indexDay }: Props) 
             value={item.time}
             indexTime={index}
             handlerSetTime={(value, indexTime) =>
-              handlerSetTime(value, indexDay, indexTime)
+              handlerSetTime({...item, time: value}, indexDay, indexTime)
             }
           />
         </div>

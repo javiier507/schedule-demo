@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Employee } from "../types/schedule-types";
+import { Employee, Schedule } from "../types/schedule-types";
 import { calculateByEmployee, getTotalResultByIndex } from "../utils/calculate";
 
 import { ScheduleEmployee } from "./schedule-employee";
@@ -15,14 +15,15 @@ export const Schedules = (props: Props) => {
   const totals = employees.map(calculateByEmployee);
 
   const handlerSetTime = (
-    value: string,
+    schedule: Schedule,
     indexEmployee: number,
     indexDay: number,
     indexTime: number
   ) => {
     const arrayData = [...employees];
     try {
-      arrayData[indexEmployee].schedules[indexDay][indexTime].time = value;
+      arrayData[indexEmployee].schedules[indexDay][indexTime].time =
+        schedule.time;
       setEmployees(arrayData);
     } catch (e) {
       console.error(e);

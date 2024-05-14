@@ -1,4 +1,8 @@
-import { Employee, ScheduleTotalResult } from "../types/schedule-types";
+import {
+  Employee,
+  Schedule,
+  ScheduleTotalResult,
+} from "../types/schedule-types";
 
 import { ScheduleDay } from "./schedule-day";
 import { ScheduleTotal } from "./schedule-total";
@@ -7,7 +11,7 @@ type Props = {
   employee: Employee;
   indexEmployee: number;
   handlerSetTime: (
-    value: string,
+    schedule: Schedule,
     indexEmployee: number,
     indexDay: number,
     indexTime: number
@@ -19,19 +23,19 @@ export const ScheduleEmployee = ({
   employee,
   indexEmployee,
   handlerSetTime,
-  scheduleTotalResult
+  scheduleTotalResult,
 }: Props) => {
   return (
     <div style={{ display: "flex", marginBottom: "1rem" }}>
       <div style={{ width: "5%" }}>{employee.fullname}</div>
       <div style={{ width: "95%", display: "flex" }}>
-        {employee.schedules.map((dayItem, dayIndex) => (
+        {employee.schedules.map((item, index) => (
           <ScheduleDay
-            key={`day-${dayIndex}`}
-            schedule={dayItem}
-            indexDay={dayIndex}
-            handlerSetTime={(value, indexDay, indexTime) =>
-              handlerSetTime(value, indexEmployee, indexDay, indexTime)
+            key={`day-${index}`}
+            schedule={item}
+            indexDay={index}
+            handlerSetTime={(schedule, indexDay, indexTime) =>
+              handlerSetTime(schedule, indexEmployee, indexDay, indexTime)
             }
           />
         ))}

@@ -20,10 +20,15 @@ export type Type = "projected" | "actual";
 
 export type Window = "in" | "out";
 
-export type ScheduleTotals = {
+export type ScheduleTotalItem = {
   hours: number;
   overtime: number;
   cost: number;
+};
+
+export type ScheduleTotalResult = {
+  projected: ScheduleTotalItem;
+  actual: ScheduleTotalItem;
 };
 
 export type Sale = {

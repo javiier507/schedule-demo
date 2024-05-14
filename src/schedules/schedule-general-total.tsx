@@ -1,14 +1,14 @@
-import { Employee } from "../types/schedule-types";
+import { ScheduleTotalResult } from "../types/schedule-types";
 import { calculateGeneralTotal } from "../utils/calculate";
 
 import { ScheduleTotal } from "./schedule-total";
 
 type Props = {
-  employees: Employee[];
+  scheduleTotalResults: ScheduleTotalResult[];
 };
 
-export const ScheduleGeneralTotal = ({ employees = [] }: Props) => {
-  const totals = calculateGeneralTotal(employees);
+export const ScheduleGeneralTotal = ({ scheduleTotalResults = [] }: Props) => {
+  const totals = calculateGeneralTotal(scheduleTotalResults);
 
   return (
     <div

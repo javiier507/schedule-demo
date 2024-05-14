@@ -1,9 +1,6 @@
-import { ScheduleTotals } from "../types/schedule-types";
+import { ScheduleTotalResult } from "../types/schedule-types";
 
-type Props = {
-  projected: ScheduleTotals;
-  actual: ScheduleTotals;
-};
+type Props = ScheduleTotalResult & {};
 
 export const ScheduleTotal = ({ projected, actual }: Props) => {
   return (

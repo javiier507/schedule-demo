@@ -2,7 +2,8 @@ import {
   Schedule,
   Type,
   Employee,
-  ScheduleTotals,
+  ScheduleTotalItem,
+  ScheduleTotalResult,
 } from "../types/schedule-types";
 
 export function timeToDatetime(time: string | null): Date | undefined {
@@ -48,14 +49,11 @@ export function calculateByWeek(schedules: Schedule[][], type: Type): number {
   );
 }
 
-export function calculateByEmployee(employee: Employee): {
-  projected: ScheduleTotals;
-  actual: ScheduleTotals;
-} {
+export function calculateByEmployee(employee: Employee): ScheduleTotalResult {
   const projectedHours = calculateByWeek(employee.schedules, "projected");
   const actualHours = calculateByWeek(employee.schedules, "actual");
 
-  const projected: ScheduleTotals = {
+  const projected: ScheduleTotalItem = {
     hours: projectedHours,
     overtime:
       projectedHours - employee.workHours > 0
@@ -64,7 +62,7 @@ export function calculateByEmployee(employee: Employee): {
     cost: employee.rate * projectedHours,
   };
 
-  const actual: ScheduleTotals = {
+  const actual: ScheduleTotalItem = {
     hours: actualHours,
     overtime:
       actualHours - employee.workHours > 0
@@ -79,12 +77,14 @@ export function calculateByEmployee(employee: Employee): {
   };
 }
 
-export function calculateGeneralTotal(employees: Employee[]): {
-  projected: ScheduleTotals;
-  actual: ScheduleTotals;
-} {
-  return employees.map(calculateByEmployee).reduce(
-    (prev, current): { projected: ScheduleTotals; actual: ScheduleTotals } => {
+export function calculateGeneralTotal(
+  scheduleTotalResults: ScheduleTotalResult[]
+): ScheduleTotalResult {
+  return scheduleTotalResults.reduce(
+    (
+      prev,
+      current
+    ): { projected: ScheduleTotalItem; actual: ScheduleTotalItem } => {
       return {
         projected: {
           hours: prev.projected.hours + current.projected.hours,
@@ -111,4 +111,26 @@ export function calculateGeneralTotal(employees: Employee[]): {
       },
     }
   );
+}
+
+export function getTotalResultByIndex(
+  scheduleTotalResults: ScheduleTotalResult[],
+  index: number
+): ScheduleTotalResult {
+  const result = scheduleTotalResults[index];
+  if (!result) {
+    return {
+      projected: {
+        hours: 0,
+        overtime: 0,
+        cost: 0,
+      },
+      actual: {
+        hours: 0,
+        overtime: 0,
+        cost: 0,
+      },
+    };
+  }
+  return result;
 }

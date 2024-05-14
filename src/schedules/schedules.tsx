@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Employee } from "../types/schedule-types";
+import { calculateByEmployee, getTotalResultByIndex } from "../utils/calculate";
 
 import { ScheduleEmployee } from "./schedule-employee";
 import { ScheduleGeneralTotal } from "./schedule-general-total";
@@ -11,6 +12,7 @@ type Props = {
 
 export const Schedules = (props: Props) => {
   const [employees, setEmployees] = useState<Employee[]>(props.employees);
+  const totals = employees.map(calculateByEmployee);
 
   const handlerSetTime = (
     value: string,
@@ -35,9 +37,10 @@ export const Schedules = (props: Props) => {
           employee={item}
           indexEmployee={index}
           handlerSetTime={handlerSetTime}
+          scheduleTotalResult={getTotalResultByIndex(totals, index)}
         />
       ))}
-      <ScheduleGeneralTotal employees={employees} />
+      <ScheduleGeneralTotal scheduleTotalResults={totals} />
     </>
   );
 };
